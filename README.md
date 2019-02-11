@@ -1,8 +1,27 @@
 # MySQL
-MYSQL重要概念与常用语句
+MySQL重要概念与常用语句
 
 ## 安装
-### Ubantu
+### Ubuntu
+>Ubuntu（友帮拓、优般图、乌班图）：是一个以桌面应用为主的开源GNU/Linux操作系统。Ubuntu 是基于Debian GNU/Linux，支持x86、amd64（即x64）和ppc架构，由全球化的专业开发团队（Canonical Ltd）打造的。
+
+**在Ubuntu下安装MySQL**
+
+首先执行下面三条命令：
+```
+sudo apt-get install mysql-server
+sudo apt install mysql-client
+sudo apt install libmysqlclient-dev
+```
+执行完成后可以通过下面的命令测试是否安装成功：
+
+`sudo netstat -tap | grep mysql`
+
+通过如下命令进入MySQL服务：
+
+`mysql -uroot -p密码`
+
+
 ### CentOS
 
 ## 启动服务与连接
