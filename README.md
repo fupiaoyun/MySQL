@@ -7,26 +7,29 @@ MySQL重要概念与常用语句
 
 **在Ubuntu下安装mysql**
 
-1. 首先执行下面三条命令：
+1.首先执行下面三条命令：
 ```
 sudo apt-get install mysql-server
 sudo apt install mysql-client
 sudo apt install libmysqlclient-dev
 ```
-2. 执行完成后可以通过下面的命令测试是否安装成功：
+2.执行完成后可以通过下面的命令测试是否安装成功：
 
 `sudo netstat -tap | grep mysql`
 
-3. 通过如下命令进入mysql服务：
+3.通过如下命令进入mysql服务：
 
 `mysql -uroot -p密码`
+
+详见[Ubuntu安装mysql教程](https://blog.csdn.net/xiangwanpeng/article/details/54562362
+)
 
 
 ### CentOS
 >CentOS（Community Enterprise Operating System，社区企业操作系统）：是Linux发行版之一，它是来自于Red Hat Enterprise Linux依照开放源代码规定释出的源代码所编译而成。由于出自同样的源代码，因此有些要求高度稳定性的服务器以CentOS替代商业版的Red Hat Enterprise Linux使用。两者的不同，在于CentOS完全开源。
 
 **在CentOS下安装mysql**
-1. 首先检查系统是否装有mysql:
+1.首先检查系统是否装有mysql:
 
 `rpm -qa | grep mysql`
 
@@ -34,8 +37,27 @@ sudo apt install libmysqlclient-dev
 
 `yum remove mysql`
 
+注：这里执行安装命令是无效的，因为centos默认是Mariadb，执行以下命令只是更新Mariadb数据库
 
-2.
+`yum install mysql`
+
+2.下载mysql的repo源:
+
+`# wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm`
+
+安装`mysql-community-release-el7-5.noarch.rpm包`：
+
+`# sudo rpm -ivh mysql-community-release-el7-5.noarch.rpm`
+
+安装这个包后，会获得两个mysql的`yum repo源`：/etc/yum.repos.d/mysql-community.repo,/etc/yum.repos.d/mysql-community-source.repo。
+
+3.安装mysql
+
+`# sudo yum install mysql-server`
+
+详见[CentOS安装mysql教程](https://blog.csdn.net/a774630093/article/details/79270080
+)
+
 ## 启动服务与连接
 
 ## 数据库管理
