@@ -102,7 +102,7 @@ sudo apt install libmysqlclient-dev
 
 `mysql>revoke select on dmc_db.* from test;//如果权限不存在会报错`
 
-**注：**上面的命令也可以使用多个权限同时赋予和回收，权限之间使用逗号分隔
+**注：上面的命令也可以使用多个权限同时赋予和回收，权限之间使用逗号分隔**
 
 `mysql>grant select,update,delete,insert on dmc_db.* to test;`
 
