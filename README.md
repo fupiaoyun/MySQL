@@ -9,10 +9,10 @@ MySQL重要概念与常用语句
 
 1.首先执行下面三条命令：
 
-```
-sudo apt-get install mysql-server
-sudo apt install mysql-client
-sudo apt install libmysqlclient-dev
+```shell
+$ sudo apt-get install mysql-server
+$ sudo apt install mysql-client
+$ sudo apt install libmysqlclient-dev
 ```
 
 2.执行完成后可以通过下面的命令测试是否安装成功：
