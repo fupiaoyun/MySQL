@@ -2,9 +2,9 @@
 MySQL重要概念与常用语句
 
 ## 目录
-1.[安装](#jump)
-    - Ubuntu
-    + CentOS
+1.[安装](#安装)
+    - [Ubuntu](#Ubuntu)
+    + [CentOS](#CentOS)
 2. 启动服务与连接
 3. 数据库管理
     - 用户管理
@@ -35,7 +35,7 @@ MySQL重要概念与常用语句
 
 ## <span id="安装">一、安装</span>
 
-### Ubuntu
+### <span id="Ubuntu">Ubuntu</span>
 >Ubuntu（友帮拓、优般图、乌班图）：是一个以桌面应用为主的开源GNU/Linux操作系统。Ubuntu 是基于Debian GNU/Linux，支持x86、amd64（即x64）和ppc架构，由全球化的专业开发团队（Canonical Ltd）打造的。
 
 **在Ubuntu下安装mysql**
@@ -66,7 +66,7 @@ $ mysql -uroot -p密码
 
 ---
 
-### CentOS
+### <span id="CentOS">CentOS</span>
 >CentOS（Community Enterprise Operating System，社区企业操作系统）：是Linux发行版之一，它是来自于Red Hat Enterprise Linux依照开放源代码规定释出的源代码所编译而成。由于出自同样的源代码，因此有些要求高度稳定性的服务器以CentOS替代商业版的Red Hat Enterprise Linux使用。两者的不同，在于CentOS完全开源。
 
 **在CentOS下安装mysql**
