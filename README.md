@@ -8,7 +8,7 @@ MySQL重要概念与常用语句
 **在Ubuntu下安装mysql**
 
 1.首先执行下面三条命令：
-```
+```Shell
 sudo apt-get install mysql-server
 sudo apt install mysql-client
 sudo apt install libmysqlclient-dev
