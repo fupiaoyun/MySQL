@@ -33,8 +33,8 @@ MySQL重要概念与常用语句
 
 ---
 
-## 一、安装
-<span id="jump">Hello World</span>
+## <span id="安装">一、安装</span>
+
 ### Ubuntu
 >Ubuntu（友帮拓、优般图、乌班图）：是一个以桌面应用为主的开源GNU/Linux操作系统。Ubuntu 是基于Debian GNU/Linux，支持x86、amd64（即x64）和ppc架构，由全球化的专业开发团队（Canonical Ltd）打造的。
 
