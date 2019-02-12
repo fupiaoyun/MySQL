@@ -514,27 +514,128 @@ E-R模型图，既表示实体，也表示实体之间的联系，是现实世�
 ### 新建表
 CREATE TABLE语句
 
-```
-mysql>CREATE TABLE teacher(t_no int(7),t_name varchar(20),sex char(1),birth DATE,title varchar(20),dept varchar(20));
+```SQL
+CREATE TABLE teacher(t_no int(7),t_name varchar(20),sex char(1),birth DATE,title varchar(20),dept varchar(20));
 ```
 
 ### 删除表
 DROP TABLE语句
 
-```
-mysql>DROP TABLE teacher;
+```SQL
+DROP TABLE teacher;
 ```
 
 ### 修改表结构
 ALTER TABLE语句
-#### 添加字段
+#### 添加字段 ADD
 FIRST：放到表的首位
 AFTER：放到某个字段后面
 
 ```SQL
-ALTER TABLE tabName
-ADD 字段名称 字段属性 [完整性约束条件] [FIRST|AFTER 字段名称];
+ALTER TABLE tabName ADD 字段名称 字段属性 [完整性约束条件] [FIRST|AFTER 字段名称];
 ```
+**示例**
+
+```SQL
+ALTER TABLE user ADD addr VARCHAR(50);
+```
+
+#### 删除字段 DROP
+
+```SQL
+ALTER TABLE tabName DROP 字段名称;
+```
+**示例**
+
+```SQL
+ALTER TABLE user DROP addr;
+```
+
+#### 给字段添加默认值 SET DEFAULT
+
+```SQL
+ALTER TABLE tabName ALTER 字段名称 SET DEFAULT 默认值;
+```
+**示例**
+
+```SQL
+ALTER TABLE user ALTER name SET DEFAULT 'xiaoming';
+```
+
+#### 删除默认值 DROP DEFAULT
+
+```SQL
+ALTER TABLE tabName ALTER 字段名称 DROP DEFAULT;
+```
+**示例**
+
+```SQL
+ALTER TABLE user ALTER name DROP DEFAULT;
+```
+
+#### 修改字段类型和字段属性 MODIFY
+
+```SQL
+ALTER TABLE tabName MODIFY 字段名称 字段类型 [字段属性] [FIRST|ALTER 字段名称];
+```
+**示例**
+
+```SQL
+//修改字段的字段类型和字段属性
+ALTER TABLE user MODIFY id INT AUTO_INCREMENT KEY;
+```
+
+#### 修改字段名称、字段类型、字段属性 CHANGE
+与MODIFY相比，CHANGE可以修改字段的名称
+
+```SQL
+ALTER TABLE tabName CHANGE 原字段名称 新字段名称 字段类型 字段属性 [FIRST|ALTER 字段名称];
+```
+**示例**
+
+```SQL
+//修改字段名称、字段类型和字段属性
+ALTER TABLE user CHANGE name username CHAR(20) NOT NULL FIRST;
+```
+
+#### 添加主键 ADD PRIMARY KEY
+
+```SQL
+ALTER TABLE tabName ADD PRIMARY KEY（字段名称）;
+```
+**示例**
+
+```SQL
+//添加主键
+ALTER TABLE user ADD PRIMARY KEY（id);
+```
+
+#### 删除主键 DROP PRIMARY KEY
+
+```SQL
+ALTER TABLE tabName DROP PRIMARY KEY;
+```
+**示例**
+
+```SQL
+//删除主键
+ALTER TABLE user DROP PRIMARY KEY;
+```
+
+#### 修改表名称 RENAME
+
+```SQL
+ALTER TABLE tabName RENAME [TO|AS] newTabName;
+//或
+RENAME TABLE tabName TO newTabName;
+```
+**示例**
+
+```SQL
+//修改表名称
+RENAME TABLE user TO user1;
+```
+
 ## 六、数据操作
 ### 插入数据
 ### 修改数据
