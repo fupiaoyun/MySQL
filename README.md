@@ -89,8 +89,8 @@ $ sudo service mysql start
 
 2.连接服务器：
 
-```
-mysql -u root 密码
+```shell
+$ mysql -u root 密码
 ```
 
 ---
