@@ -399,7 +399,7 @@ mysql>flush tables for read;
 查看当前服务器上存在什么数据库：**SHOW语句**
 
 ```
-mysql>SHOW DATABASES
+mysql>SHOW DATABASES;
 ```
 
 ### 选择数据库
@@ -462,7 +462,7 @@ mysql>show create table empt;
 > 元数据：是关于数据的数据，如数据库名或表名、列的数据类型或访问权限等。用于表述该信息的其他术语包括“数据词典”和“系统目录”。
 
 ```
-mysql>use information_schema
+mysql>use information_schema;
 mysql>select * from columns where table_name='empt';
 ```
 ---
