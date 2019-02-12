@@ -37,7 +37,7 @@ mysql -uroot -p密码
 
 **在CentOS下安装mysql**
 
-1.首先检查系统是否装有mysql:
+1.首先检查系统是否装有mysql：
 
 ```
 rpm -qa | grep mysql
@@ -55,7 +55,7 @@ yum remove mysql
 yum install mysql
 ```
 
-2.下载mysql的repo源:
+2.下载mysql的repo源：
 
 ```
 # wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
@@ -69,7 +69,7 @@ yum install mysql
 
 安装这个包后，会获得两个mysql的`yum repo源`：/etc/yum.repos.d/mysql-community.repo,/etc/yum.repos.d/mysql-community-source.repo。
 
-3.安装mysql
+3.安装mysql：
 
 ```
 # sudo yum install mysql-server
