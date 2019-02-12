@@ -5,31 +5,31 @@ MySQL重要概念与常用语句
 1.[安装](#安装)
     - [Ubuntu](#Ubuntu)
     + [CentOS](#CentOS)
-2. 启动服务与连接
-3. 数据库管理
-    - 用户管理
-    + 权限设置
-    - 日志
-    + 备份
-4. 库操作
-    - 查看数据库
-    + 选择数据库
-    - 新建数据库
-    + 删除数据库
-5. 表操作
-    - 查看表结构
-    + 数据模型
-    - 新建表
-    + 删除表
-    - 修改表结构
-6. 数据操作
-    - 插入数据
-    + 修改数据
-    - 删除数据
-7. 视图和索引
-    - 视图
-    + 索引
-8. SQL语法
+2. [启动服务与连接](#启动服务与连接)
+3. [数据库管理](#数据库管理)
+    - [用户管理](#用户管理)
+    + [权限设置](#权限设置)
+    - [日志](#日志)
+    + [备份](#备份)
+4. [库操作](#库操作)
+    - [查看数据库](#查看数据库)
+    + [选择数据库](#选择数据库)
+    - [新建数据库](#新建数据库)
+    + [删除数据库](#删除数据库)
+5. [表操作](#表操作)
+    - [查看表结构](#查看表结构)
+    + [数据模型](#数据模型)
+    - [新建表](#新建表)
+    + [删除表](#删除表)
+    - [修改表结构](#修改表结构)
+6. [数据操作](#数据操作)
+    - [插入数据](#插入数据)
+    + [修改数据](#修改数据)
+    - [删除数据](#删除数据)
+7. [视图和索引](#视图和索引)
+    - [视图](#视图)
+    + [索引](#索引)
+8. [SQL语法](#SQL语法)
 
 ---
 
@@ -113,7 +113,7 @@ yum install mysql
 
 ---
 
-## 二、启动服务与连接
+## <span id="启动服务与连接">二、启动服务与连接</span>
 1.启动mysql服务器：
 
 ```shell
@@ -128,8 +128,8 @@ $ mysql -u root 密码
 
 ---
 
-## 三、数据库管理
-### 用户管理
+## <span id="数据库管理">三、数据库管理</span>
+### <span id="用户管理">用户管理</span>
 1.选择数据库
 
 ```
@@ -162,7 +162,7 @@ mysql>drop user newuser;//mysql5之前删除用户时必须先使用revoke删除
 
 ---
 
-### 权限设置
+### <span id="权限设置">权限设置</span>
 1.查看用户权限
 
 ```
@@ -195,7 +195,7 @@ mysql>flush privileges;
 
 ---
 
-### 日志
+### <span id="日志">日志</span>
 #### 日志分类
 
 在MariaDB/MySQL中，主要有5种日志文件：
@@ -357,7 +357,7 @@ mysql>show warnings;
 
 ---
 
-### 备份
+### <span id="备份">备份</span>
 #### 逻辑备份
 MySQL中的逻辑备份试讲数据库中的数据备份为一个文本文件，备份的文件可以被查看和编辑。在MySQL中，可以使用mysqldump工具来完成逻辑备份：
 
@@ -427,8 +427,8 @@ mysql>flush tables for read;
 
 ---
 
-## 四、库操作
-### 查看数据库
+## <span id="库操作">四、库操作</span>
+### <span id="查看数据库">查看数据库</span>
 
 查看当前服务器上存在什么数据库：**SHOW语句**
 
@@ -436,7 +436,7 @@ mysql>flush tables for read;
 SHOW DATABASES;
 ```
 
-### 选择数据库
+### <span id="选择数据库">选择数据库</span>
 
 选定使用数据库：**USE语句**
 
@@ -444,7 +444,7 @@ SHOW DATABASES;
 USE test;
 ```
 
-### 新建数据库
+### <span id="新建数据库">新建数据库</span>
 
 新建数据库：**CREATE语句**
 
@@ -452,7 +452,7 @@ USE test;
 CREATE DATABASE test;
 ```
 
-### 删除数据库
+### <span id="删除数据库">删除数据库</span>
 
 删除数据库：**DROP语句**
 
@@ -461,8 +461,8 @@ DROP test;
 ```
 ---
 
-## 五、表操作
-### 查看表结构
+## <span id="表操作">五、表操作</span>
+### <span id="查看表结构">查看表结构</span>
 **1.describe(desc) 表名**
 
 describe用于查看特定表的详细设计信息
@@ -501,7 +501,7 @@ select * from columns where table_name='empt';
 ```
 ---
 
-### 数据模型
+### <span id="数据模型">数据模型</span>
 #### 数据模型的分类
 最常用的数据模型是概念数据模型和结构数据模型：
 - 概念数据模型（信息模型）：面向用户的，按照用户的观点进行建模，典型代表：E-R图
@@ -548,21 +548,21 @@ E-R模型图，既表示实体，也表示实体之间的联系，是现实世�
 
 ---
 
-### 新建表
+### <span id="新建表">新建表</span>
 CREATE TABLE语句
 
 ```SQL
 CREATE TABLE teacher(t_no int(10),t_name varchar(20),sex char(1),birth DATE,title varchar(20),dept varchar(20));
 ```
 
-### 删除表
+### <span id="删除表">删除表</span>
 DROP TABLE语句
 
 ```SQL
 DROP TABLE teacher;
 ```
 
-### 修改表结构
+### <span id="修改表结构">修改表结构</span>
 ALTER TABLE语句
 #### 添加字段：ADD
 FIRST：放到表的首位
@@ -674,8 +674,8 @@ RENAME TABLE user TO user1;
 ```
 ---
 
-## 六、数据操作
-### 插入数据
+## <span id="数据操作">六、数据操作</span>
+### <span id="插入数据">插入数据</span>
 #### 将文本文件装载到表中：LOAD DATA语句
 
 ```
@@ -703,7 +703,7 @@ INSERT INTO teacher VALUES('2220152470','xiaoming','M','1974-09-26','NULL','Hist
 
 **注**：这里字符串和日期均为引号括起来的字符串。另外，可以直接用`INSERT`语句插入`NULL`代表不存在的值。
 
-### 修改数据：UPDATE语句
+### <span id="修改数据">修改数据：UPDATE语句</span>
 
 ```SQL
 UPDATE table_name SET field1=new-value1,field2=new-value2 [WHERE Clause];
@@ -711,7 +711,7 @@ UPDATE table_name SET field1=new-value1,field2=new-value2 [WHERE Clause];
 
 **注**：可以同时更新一个或多个字段。
 
-### 删除数据：DELETE语句
+### <span id="删除数据">删除数据：DELETE语句</span>
 
 ```SQL
 DELETE FROM table_name [WHERE Clause];
@@ -721,8 +721,8 @@ DELETE FROM table_name [WHERE Clause];
 
 ---
 
-## 七、视图和索引
-### 视图
+## <span id="视图和索引">七、视图和索引</span>
+### <span id="视图">视图</span>
 > 视图（View）：是从一个或多个表中导出的表，是一种虚拟存在的表。通过视图，用户可以不用看到整个数据库中的数据，而只关心对自己有用的数据。
 
 **注**：
@@ -738,7 +738,7 @@ CREATE VIEW 视图名（列a,列b,列c） AS SELECT 列1，列2，列3 FROM 表�
 ```
 ---
 
-### 索引
+### <span id="索引">索引</span>
 > 索引（Index）：在关系数据库中，索引是一种单独的、物理的对数据库表中一列或多列的值进行排序的一种存储结构，它是某个表中一列或若干列值的集合和相应的指向表中物理标识这些值的数据页的逻辑指针清单。索引的作用相当于图书的目录，可以根据目录中的页码快速找到所需的内容。
 
 **注**：
@@ -752,7 +752,7 @@ CREATE INDEX index_name ON table_name(column_name);
 ```
 ---
 
-## 八、SQL语法
+## <span id="SQL语法">八、SQL语法</span>
 ### SQL DML和DDL
 可以把SQL分为两个部分：数据操作语言（DML）和数据定义语言（DDL）。
 
