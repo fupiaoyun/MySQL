@@ -668,16 +668,16 @@ INSERT INTO teacher VALUES('2220152470','xiaoming','M','1974-09-26','NULL','Hist
 
 ### 修改数据：UPDATE语句
 
-```
-UPDATE table_name SET field1=new-value1,field2=new-value2 [WHERE Clause]
+```SQL
+UPDATE table_name SET field1=new-value1,field2=new-value2 [WHERE Clause];
 ```
 
 **注**：可以同时更新一个或多个字段。
 
 ### 删除数据：DELETE语句
 
-```
-DELETE FROM table_name [WHERE Clause]
+```SQL
+DELETE FROM table_name [WHERE Clause];
 ```
 
 **注**：如果没有指定WHERE子句，MySQL表中所有记录将被删除。
@@ -685,5 +685,18 @@ DELETE FROM table_name [WHERE Clause]
 ---
 
 ## 七、视图
+> 视图（View）：是从一个或多个表中导出的表，是一种虚拟存在的表。通过视图，用户可以不用看到整个数据库中的数据，而只关心对自己有用的数据。
+
+**注**：
+- 数据库只存放了视图的定义，而没有存放视图中的数据，这些数据存放在原来的表中。
++ 使用视图查询数据时，数据库系统会从原来的表中取出对应的数据。
+- 视图中的数据依赖于原来表中的数据，一旦表中数据发生改变，显示在视图中的数据也会发生改变。
++ 在使用视图时，可以把它当做一张表。
+
+**创建视图格式：**
+
+```SQL
+CREATE VIEW 视图名（列a,列b,列c） AS SELECT 列1，列2，列3 FROM 表名;
+```
 
 ## 八、SQL语法
