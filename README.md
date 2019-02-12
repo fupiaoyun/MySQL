@@ -427,6 +427,43 @@ mysql>DROP test;
 
 ## 五、表操作
 ### 查看表结构
+1.describe(desc) 表名
+
+describe用于查看特定表的详细设计信息
+
+```
+mysql>desc empt;
+//或者
+mysql>describe empt;
+```
+
+2.show columns from 表名
+
+用于查询出表的列信息
+
+```
+mysql>show columns from empt;
+```
+
+3.show create table 表名
+
+用于查询建表语句
+
+```
+mysql>show create table empt;
+```
+
+4.使用`information_schema`数据库
+
+`information_schema`数据库是MySQL自带的，它提供了访问数据库元数据的方式。
+
+> 元数据：是关于数据的数据，如数据库名或表名、列的数据类型或访问权限等。用于表述该信息的其他术语包括“数据词典”和“系统目录”。
+
+```
+mysql>use information_schema
+mysql>select * from columns where table_name='empt';
+```
+
 ### 数据结构
 ### 新建表
 ### 删除表
