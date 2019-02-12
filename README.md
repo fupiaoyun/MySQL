@@ -660,7 +660,7 @@ LOAD DATA INFILE '文件路径' INTO TABLE pet FIELDS TERMINATED BY ',';
 
 #### 一次增加一个新纪录：INSERT语句
 
-```
+```SQL
 INSERT INTO teacher VALUES('2220152470','xiaoming','M','1974-09-26','NULL','History');
 ```
 
@@ -700,3 +700,29 @@ CREATE VIEW 视图名（列a,列b,列c） AS SELECT 列1，列2，列3 FROM 表�
 ```
 
 ## 八、SQL语法
+- SQL对大小写不敏感：SELECT与select是相同的
++ 要求在每条SQL语句的末端使用分号
+
+### SQL DML和DDL
+可以把SQL分为两个部分：数据操作语言（DML）和数据定义语言（DDL）。
+
+SQL（结构化查询语言）是用于执行查询的语法。但是SQL语言也包含用于更新、插入和删除记录的语法。
+
+#### DML
+查询和更新指令构成了SQL的DML部分：
+- SELECT：从数据库表中获取数据
++ UPDATE：更新数据库表中的数据
+- DELETE：从数据库表中删除数据
++ INSERT INTO：向数据库表中插入数据
+
+#### DDL
+SQL的数据定义语言（DDL）部分使我们有能力创建或删除表格。也可以定义索引（键），规定表之间的连接，以及施加表间的约束。
+
+SQL中最重要的DDL语句：
+- CREATE DATABASE：创建新数据库
++ ALTER DATABASE：修改数据库
+- CREATE TABLE：创建新表
++ ALTER TABLE：变更（改变）数据库表
+- DROP TABLE：删除表
++ CREATE INDEX：创建索引（搜索键）
+- DROP INDEX：删除索引
