@@ -8,11 +8,13 @@ MySQL重要概念与常用语句
 **在Ubuntu下安装mysql**
 
 1.首先执行下面三条命令：
-```Shell
+
+```
 sudo apt-get install mysql-server
 sudo apt install mysql-client
 sudo apt install libmysqlclient-dev
 ```
+
 2.执行完成后可以通过下面的命令测试是否安装成功：
 
 ```
@@ -52,6 +54,7 @@ yum remove mysql
 ```
 yum install mysql
 ```
+
 2.下载mysql的repo源:
 
 ```
