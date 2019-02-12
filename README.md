@@ -500,14 +500,14 @@ E-R模型图，既表示实体，也表示实体之间的联系，是现实世�
 可以存在1对1，1对多，多对多的关系。
 
 ##### 基本术语
-- **关系（Relation）：**一个关系对应着一个二维表，二维表就是关系名。
-+ **元组（Tuple）：**在二维表中的一行，称为一个元组。
-- **属性（Attribute）：**在二维表中的列，称为属性。属性的个数称为关系的元或度。列的值为属性值。
-+ **域（值，Domain）：**属性值的取值范围为值域。
-- **分量：**每一行对应的列的属性值，即元组中的一个属性值。
-+ **关系模式：**在二维表中的行定义，即对关系的描述称为关系模式。一般表示为（属性1，属性2，……，属性n），如老师的关系模型可以表示为教师（教师号，姓名，性别，出生年月，职称，所在系）。
-- **键（码）：**如果在一个关系中存在唯一标识一个实体的一个属性或属性集，则称为实体的键，即使得在该关系上的任何一个关系状态的两个元组，在该属性上的值的组合都不同。
-+ **候选键（候选码）：**若关系中的某一属性能唯一标识一个元组，则称这个属性为该关系的候选键或候选码。
+- **关系（Relation）**：一个关系对应着一个二维表，二维表就是关系名。
++ **元组（Tuple）**：在二维表中的一行，称为一个元组。
+- **属性（Attribute）**：在二维表中的列，称为属性。属性的个数称为关系的元或度。列的值为属性值。
++ **域（值，Domain）**：属性值的取值范围为值域。
+- **分量**：每一行对应的列的属性值，即元组中的一个属性值。
++ **关系模式**：在二维表中的行定义，即对关系的描述称为关系模式。一般表示为（属性1，属性2，……，属性n），如老师的关系模型可以表示为教师（教师号，姓名，性别，出生年月，职称，所在系）。
+- **键（码）**：如果在一个关系中存在唯一标识一个实体的一个属性或属性集，则称为实体的键，即使得在该关系上的任何一个关系状态的两个元组，在该属性上的值的组合都不同。
++ **候选键（候选码）**：若关系中的某一属性能唯一标识一个元组，则称这个属性为该关系的候选键或候选码。
 
 ---
 
@@ -515,7 +515,7 @@ E-R模型图，既表示实体，也表示实体之间的联系，是现实世�
 CREATE TABLE语句
 
 ```SQL
-CREATE TABLE teacher(t_no int(7),t_name varchar(20),sex char(1),birth DATE,title varchar(20),dept varchar(20));
+CREATE TABLE teacher(t_no int(10),t_name varchar(20),sex char(1),birth DATE,title varchar(20),dept varchar(20));
 ```
 
 ### 删除表
@@ -527,119 +527,162 @@ DROP TABLE teacher;
 
 ### 修改表结构
 ALTER TABLE语句
-#### 添加字段 ADD
+#### 添加字段：ADD
 FIRST：放到表的首位
 AFTER：放到某个字段后面
 
 ```SQL
 ALTER TABLE tabName ADD 字段名称 字段属性 [完整性约束条件] [FIRST|AFTER 字段名称];
 ```
-**示例**
+示例
 
 ```SQL
 ALTER TABLE user ADD addr VARCHAR(50);
 ```
 
-#### 删除字段 DROP
+#### 删除字段：DROP
 
 ```SQL
 ALTER TABLE tabName DROP 字段名称;
 ```
-**示例**
+示例
 
 ```SQL
 ALTER TABLE user DROP addr;
 ```
 
-#### 给字段添加默认值 SET DEFAULT
+#### 给字段添加默认值：SET DEFAULT
 
 ```SQL
 ALTER TABLE tabName ALTER 字段名称 SET DEFAULT 默认值;
 ```
-**示例**
+示例
 
 ```SQL
 ALTER TABLE user ALTER name SET DEFAULT 'xiaoming';
 ```
 
-#### 删除默认值 DROP DEFAULT
+#### 删除默认值：DROP DEFAULT
 
 ```SQL
 ALTER TABLE tabName ALTER 字段名称 DROP DEFAULT;
 ```
-**示例**
+示例
 
 ```SQL
 ALTER TABLE user ALTER name DROP DEFAULT;
 ```
 
-#### 修改字段类型和字段属性 MODIFY
+#### 修改字段类型和字段属性：MODIFY
 
 ```SQL
 ALTER TABLE tabName MODIFY 字段名称 字段类型 [字段属性] [FIRST|ALTER 字段名称];
 ```
-**示例**
+示例
 
 ```SQL
 //修改字段的字段类型和字段属性
 ALTER TABLE user MODIFY id INT AUTO_INCREMENT KEY;
 ```
 
-#### 修改字段名称、字段类型、字段属性 CHANGE
+#### 修改字段名称、字段类型、字段属性：CHANGE
 与MODIFY相比，CHANGE可以修改字段的名称
 
 ```SQL
 ALTER TABLE tabName CHANGE 原字段名称 新字段名称 字段类型 字段属性 [FIRST|ALTER 字段名称];
 ```
-**示例**
+示例
 
 ```SQL
 //修改字段名称、字段类型和字段属性
 ALTER TABLE user CHANGE name username CHAR(20) NOT NULL FIRST;
 ```
 
-#### 添加主键 ADD PRIMARY KEY
+#### 添加主键：ADD PRIMARY KEY
 
 ```SQL
 ALTER TABLE tabName ADD PRIMARY KEY（字段名称）;
 ```
-**示例**
+示例
 
 ```SQL
 //添加主键
 ALTER TABLE user ADD PRIMARY KEY（id);
 ```
 
-#### 删除主键 DROP PRIMARY KEY
+#### 删除主键：DROP PRIMARY KEY
 
 ```SQL
 ALTER TABLE tabName DROP PRIMARY KEY;
 ```
-**示例**
+示例
 
 ```SQL
 //删除主键
 ALTER TABLE user DROP PRIMARY KEY;
 ```
 
-#### 修改表名称 RENAME
+#### 修改表名称：RENAME
 
 ```SQL
 ALTER TABLE tabName RENAME [TO|AS] newTabName;
 //或
 RENAME TABLE tabName TO newTabName;
 ```
-**示例**
+示例
 
 ```SQL
 //修改表名称
 RENAME TABLE user TO user1;
 ```
+---
 
 ## 六、数据操作
 ### 插入数据
-### 修改数据
-### 删除数据
+#### 将文本文件装载到表中：LOAD DATA语句
+
+```
+mysql>LOAD DAATA INFILE '文件路径' INTO TABLE teacher;
+```
+
+**注**：若使用Windows中的编辑器（使用\r\n作为行的换行符）创建文件，应使用：
+
+```SQL
+LOAD DATA INFILE '文件路径' INTO TABLE pet LINES TERMINATED BY '\r\n';
+//在运行 OS X 的苹果电脑上，应使用行结束符\r
+```
+
+自定义字段间分隔符为逗号：
+
+```SQL
+LOAD DATA INFILE '文件路径' INTO TABLE pet FIELDS TERMINATED BY ',';
+```
+
+#### 一次增加一个新纪录：INSERT语句
+
+```
+INSERT INTO teacher VALUES('2220152470','xiaoming','M','1974-09-26','NULL','History');
+```
+
+**注**：这里字符串和日期均为引号括起来的字符串。另外，可以直接用`INSERT`语句插入`NULL`代表不存在的值。
+
+### 修改数据：UPDATE语句
+
+```
+UPDATE table_name SET field1=new-value1,field2=new-value2 [WHERE Clause]
+```
+
+**注**：可以同时更新一个或多个字段。
+
+### 删除数据：DELETE语句
+
+```
+DELETE FROM table_name [WHERE Clause]
+```
+
+**注**：如果没有指定WHERE子句，MySQL表中所有记录将被删除。
+
+---
 
 ## 七、视图
 
