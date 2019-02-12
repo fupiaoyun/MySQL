@@ -17,14 +17,15 @@ $ sudo apt install libmysqlclient-dev
 
 2.执行完成后可以通过下面的命令测试是否安装成功：
 
-```
-sudo netstat -tap | grep mysql
+```shell
+$ sudo netstat -tap | grep mysql
 ```
 
 3.通过如下命令进入mysql服务：
 
-```
-mysql -uroot -p密码
+```shell
+$ sudo service mysql start
+$ mysql -uroot -p密码
 ```
 
 详见[Ubuntu安装mysql教程](https://blog.csdn.net/xiangwanpeng/article/details/54562362
@@ -82,8 +83,8 @@ yum install mysql
 ## 二、启动服务与连接
 1.启动mysql服务器：
 
-```
-sudo service mysql start
+```shell
+$ sudo service mysql start
 ```
 
 2.连接服务器：
@@ -398,32 +399,32 @@ mysql>flush tables for read;
 
 查看当前服务器上存在什么数据库：**SHOW语句**
 
-```
-mysql>SHOW DATABASES;
+```SQL
+SHOW DATABASES;
 ```
 
 ### 选择数据库
 
 选定使用数据库：**USE语句**
 
-```
-mysql>use test;
+```SQL
+USE test;
 ```
 
 ### 新建数据库
 
 新建数据库：**CREATE语句**
 
-```
-mysql>CREATE DATABASE test;
+```SQL
+CREATE DATABASE test;
 ```
 
 ### 删除数据库
 
 删除数据库：**DROP语句**
 
-```
-mysql>DROP test;
+```SQL
+DROP test;
 ```
 ---
 
@@ -433,26 +434,26 @@ mysql>DROP test;
 
 describe用于查看特定表的详细设计信息
 
-```
-mysql>desc empt;
+```SQL
+desc empt;
 //或者
-mysql>describe empt;
+describe empt;
 ```
 
 **2.show columns from 表名**
 
 用于查询出表的列信息
 
-```
-mysql>show columns from empt;
+```SQL
+show columns from empt;
 ```
 
 **3.show create table 表名**
 
 用于查询建表语句
 
-```
-mysql>show create table empt;
+```SQL
+show create table empt;
 ```
 
 **4.使用`information_schema`数据库**
@@ -461,9 +462,9 @@ mysql>show create table empt;
 
 > 元数据：是关于数据的数据，如数据库名或表名、列的数据类型或访问权限等。用于表述该信息的其他术语包括“数据词典”和“系统目录”。
 
-```
-mysql>use information_schema;
-mysql>select * from columns where table_name='empt';
+```SQL
+use information_schema;
+select * from columns where table_name='empt';
 ```
 ---
 
