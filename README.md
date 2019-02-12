@@ -34,6 +34,7 @@ mysql -uroot -p密码
 >CentOS（Community Enterprise Operating System，社区企业操作系统）：是Linux发行版之一，它是来自于Red Hat Enterprise Linux依照开放源代码规定释出的源代码所编译而成。由于出自同样的源代码，因此有些要求高度稳定性的服务器以CentOS替代商业版的Red Hat Enterprise Linux使用。两者的不同，在于CentOS完全开源。
 
 **在CentOS下安装mysql**
+
 1.首先检查系统是否装有mysql:
 
 ```
@@ -158,7 +159,7 @@ mysql>flush privileges;
 ---
 
 ### 日志
-1.日志分类
+#### 日志分类
 
 在MariaDB/MySQL中，主要有5种日志文件：
 - 错误日志（error log）：记录mysql服务的启停时正确和错误的信息，还记录启动、停止、运行过程中的错误信息。
@@ -168,7 +169,7 @@ mysql>flush privileges;
 - 中继日志（relay log）：主从复制时使用的日志。
 除了这5种日志，在需要时还会创建DDL日志。
 
-2.日志刷新操作
+#### 日志刷新操作
 以下操作会刷新日志文件，刷新日志文件时会关闭旧的日志文件并重新打开日志文件。对于有些日志类型，如二进制日志，刷新日志会滚动日志文件，而不仅仅是关闭并重新打开。
 ```
 mysql>FLUSH LOGS;
@@ -176,7 +177,7 @@ shell>mysqladmin flush-logs
 shell>mysqladmin refresh
 ```
 
-3.错误日志
+#### 错误日志
 错误日志是最重要的日志之一，它记录了MariaDB/MySQL服务启动和停止正确和错误的信息，还记录了mysqld实例运行过程中发生的错误事件信息。
 
 可以使用`--log-error=[file_name]`来指定mysqld记录的错误日志文件，若没有指定file_name，则默认的错误日志文件在datadir目录下的'hostname'.err，hostname表示当前的主机名。
@@ -191,7 +192,7 @@ mysql>show variables like 'log_error';
 
 在MySQL5.5.7之前，刷新日志操作（如flush logs）会被备份旧的错误日志（以_old结尾），并创建一个新的错误日志并打开。在MySQL5.5.7之后，执行刷新日志的操作时，错误日志会关闭并重新打开。如果错误日志不存在，则会先创建。
 
-4.一般查询日志
+#### 一般查询日志
 查询日志氛围一般查询日志和慢查询日志，他们是通过查询是否超出变量long_query_time指定时间的值来判定的。在超时时间内完成的查询是一般查询，可以将其记录到一般查询日志中，**但是建议关闭这种日志（默认是关闭的）**，超出时间的查询是慢查询，可以将其记录到慢查询日志中。
 
 使用`--general_log={0|1}`来决定是否启用一般查询日志，使用`--general_log_file=file_name`来指定查询日志的路径。不给定路径是默认的文件名以'hostname'.log命名。
@@ -219,7 +220,7 @@ mysql>set @@global.general_log=1;
 
 一般查询日志记录的不止是SELECT语句，几乎所有的语句都会记录。
 
-5.慢查询日志
+#### 慢查询日志
 查询超出（等于不会记录）变量long_query_time指定时间值的为慢查询，但是查询获取锁（包括锁等待）的时间不计入查询时间内。
 
 mysql记录慢查询日志是在查询执行完毕且已经完全释放锁之后才记录的，因此慢查询日志记录的顺序和执行的SQL查询语句顺序可能会不一致（例如语句1先执行，查询速度慢，语句2后执行，但查询速度快，则语句2先记录）
@@ -247,7 +248,7 @@ log_queries_not_using_indexes=OFF # 查询没有使用索引的时候是否也�
 
 归类后的结果只是精确到0.01秒，如果要显示极其精确的秒数，使用`-d`参数启用调试功能
 
-6.二进制日志
+#### 二进制日志
 
 （1）二进制日志文件
 
@@ -390,9 +391,39 @@ mysql>flush tables for read;
 ---
 
 ## 四、库操作
-### 查看、选择
+### 查看、选择库
+#### 查看库
+
+查看当前服务器上存在什么数据库：**SHOW语句**
+
+```
+mysql>SHOW DATABASES
+```
+
+#### 选择库
+
+选定使用数据库：**USE语句**
+
+```
+mysql>use test;
+```
+
 ### 新建数据库
+
+新建数据库：**CREATE语句**
+
+```
+mysql>CREATE DATABASE test;
+```
+
 ### 删除数据库
+
+删除数据库：**DROP语句**
+
+```
+mysql>DROP test;
+```
+---
 
 ## 五、表操作
 ### 查看表结构
