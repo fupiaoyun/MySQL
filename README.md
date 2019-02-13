@@ -344,7 +344,7 @@ mysql>purge binary logs to "mysql-bin.000006";
 
 master和binary是同义词
 
-`purge master logs before 'yyyy-mm-dd hh:mi:ss'`将会删除指定日期之前的所有日志。但是若指定的时间处在正在使用中的日志文件中，将无法进行purge。
+`purge master logs before 'yyyy-mm-dd hh:mm:ss'`将会删除指定日期之前的所有日志。但是若指定的时间处在正在使用中的日志文件中，将无法进行purge。
 
 ```
 mysql>purge master logs before '2017-03-29 07:36:40';
