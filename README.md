@@ -173,7 +173,7 @@ mysql>show grants for test;
 
 2.赋予用户新权限
 
-#### 赋予用户访问数据库权限
+（1）赋予用户访问数据库权限
 
 ```SQL
 grant all privileges on test_db.* to testuser@localhost identified by "123456" ;　　
@@ -186,7 +186,7 @@ grant all privileges on test_db.user_infor to testuser@localhost identified by "
 //设置用户testuser，只能访问数据库test_db的表user_infor，数据库中的其他表均不能访问 
 ```
 
-#### 赋予用户操作权限
+（2）赋予用户操作权限
 
 ```SQL
 grant all privileges on *.* to testuser@localhost identified by "123456" WITH GRANT OPTION ;　　
@@ -202,7 +202,7 @@ grant select,insert,update,delete on *.* to testuser@localhost identified by "12
 //设置用户testuser，拥有【查询\插入\更新\删除】操作权限 
 ```
 
-#### 设置用户远程访问权限
+（3）赋予用户远程访问权限
 
 ```SQL
 grant all privileges on *.* to testuser@“192.168.1.100” identified by "123456" ;　　
