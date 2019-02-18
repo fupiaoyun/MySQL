@@ -173,8 +173,32 @@ mysql>show grants for test;
 
 2.赋予用户新权限
 
+#### 赋予用户访问数据库权限
+
+```SQL
+grant all privileges on test_db.* to testuser@localhost identified by "123456" ;　　//　　设置用户testuser，只能访问数据库test_db，其他数据库均不能访问 ；
+
+grant all privileges on *.* to testuser@localhost identified by "123456" ;　　//　　设置用户testuser，可以访问mysql上的所有数据库 ；
+
+grant all privileges on test_db.user_infor to testuser@localhost identified by "123456" ;　　//　　设置用户testuser，只能访问数据库test_db的表user_infor，数据库中的其他表均不能访问 ；
 ```
-mysql>grant select on dmc_db.* to test;
+
+#### 赋予用户操作权限
+
+```SQL
+grant all privileges on *.* to testuser@localhost identified by "123456" WITH GRANT OPTION ;　　//设置用户testuser，拥有所有的操作权限，也就是管理员 ；
+
+grant select on *.* to testuser@localhost identified by "123456" WITH GRANT OPTION ;　　//设置用户testuser，只拥有【查询】操作权限 ；
+
+grant select,insert on *.* to testuser@localhost identified by "123456"  ;　　//设置用户testuser，只拥有【查询\插入】操作权限 ；
+
+grant select,insert,update,delete on *.* to testuser@localhost identified by "123456"  ;　　//设置用户testuser，拥有【查询\插入\更新\删除】操作权限 ；
+```
+
+#### 设置用户远程访问权限
+
+```SQL
+grant all privileges on *.* to testuser@“192.168.1.100” identified by "123456" ;　　//设置用户testuser，只能在客户端IP为192.168.1.100上才能远程访问mysql ；
 ```
 
 3.回收权限
@@ -182,7 +206,6 @@ mysql>grant select on dmc_db.* to test;
 ```
 mysql>revoke select on dmc_db.* from test;//如果权限不存在会报错
 ```
-
 **注：上面的命令也可以使用多个权限同时赋予和回收，权限之间使用逗号分隔**
 
 ```
@@ -193,6 +216,24 @@ mysql>grant select,update,delete,insert on dmc_db.* to test;
 
 ```
 mysql>flush privileges;
+```
+
+#### 关于root用户的访问设置
+
+设置所有用户可以远程访问mysql：**修改`my.cnf`配置文件，将`bind-address=127.0.0.1`前面加“#”注释掉**
+
+```SQL
+grant all privileges on *.* to root@"%" identified by "123456" ;　　　//　　设置用户root，可以在远程访问mysql
+
+select host,user from user; 　　//查询mysql中所有用户权限
+```
+
+关闭root用户远程访问权限：
+
+```SQL
+delete from user where user="root" and host="%" ;　　//禁止root用户在远程机器上访问mysql
+
+flush privileges ;　　//修改权限之后，刷新MySQL的系统权限相关表方可生效
 ```
 
 ---
