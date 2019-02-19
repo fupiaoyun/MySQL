@@ -134,38 +134,38 @@ $ mysql -u root 密码
 ### <span id="用户管理">用户管理</span>
 1.选择数据库
 
-```
-mysql>use mysql;
+```SQL
+use mysql;
 ```
 
 2.查看该数据库中所有用户
 
-```
-mysql>select host,user,password from user;
+```SQL
+select host,user,password from user;
 ```
 
 3.创建新用户
 
-```
-mysql>create user test IDENTIFIED by 'xxxxx';//identified by会将纯文本密码加密作为散列值存储
+```SQL
+create user test IDENTIFIED by 'xxxxx';//identified by会将纯文本密码加密作为散列值存储
 ```
 
 4.修改用户名
 
-```
-mysql>rename user feng to newuser;//mysql5之后可以使用，之前需要使用update更新user表
+```SQL
+rename user feng to newuser;//mysql5之后可以使用，之前需要使用update更新user表
 ```
 
 5.删除用户
 
-```
-mysql>drop user newuser;//mysql5之前删除用户时必须先使用revoke删除用户权限，然后删除用户
+```SQL
+drop user newuser;//mysql5之前删除用户时必须先使用revoke删除用户权限，然后删除用户
 ```
 
 6.修改密码
 
-```
-mysql> SET PASSWORD FOR 'root'@'localhost' = PASSWORD('123456');
+```SQL
+SET PASSWORD FOR 'root'@'localhost' = PASSWORD('123456');
 ```
 
 ---
@@ -295,20 +295,20 @@ grant all privileges on *.* to testuser@“192.168.1.100” identified by "12345
 
 格式：**revoke 权限 on 数据库对象 from 用户**
 
-```
-mysql>revoke select on dmc_db.* from test;//如果权限不存在会报错
+```SQL
+revoke select on dmc_db.* from test;//如果权限不存在会报错
 ```
 
 **注：上面的命令也可以使用多个权限同时赋予和回收，权限之间使用逗号分隔**
 
-```
-mysql>grant select,update,delete,insert on dmc_db.* to test;
+```SQL
+grant select,update,delete,insert on dmc_db.* to test;
 ```
 
 4.刷新权限
 
-```
-mysql>flush privileges;
+```SQL
+flush privileges;
 ```
 
 #### 关于root用户的访问设置
