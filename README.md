@@ -215,7 +215,7 @@ SUPER | 服务器管理 | 执行kill线程权限
 
 数据库对象 | 说明
 -----|-----
-*.* | 作用在整个MySQL服务器上
+\*.\* | 作用在整个MySQL服务器上
 testdb.* | 作用在单个数据库上
 testdb.orders | 作用在单个数据表上
 procedure testdb.pr_add | 作用在存储过程上
@@ -239,7 +239,7 @@ show grants for test@'%';
 
 2.赋予用户新权限
 
-格式：grant 权限 on 数据库对象 to 用户 [identified by 密码] [with grant option]
+格式：**grant 权限 on 数据库对象 to 用户 [identified by 密码] [with grant option]**
 
 GRANT命令说明：
 
@@ -293,7 +293,7 @@ grant all privileges on *.* to testuser@“192.168.1.100” identified by "12345
 
 3.回收权限
 
-格式：revoke 权限 on 数据库对象 from 用户
+格式：**revoke 权限 on 数据库对象 from 用户**
 
 ```
 mysql>revoke select on dmc_db.* from test;//如果权限不存在会报错
