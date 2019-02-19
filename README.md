@@ -162,21 +162,103 @@ mysql>rename user feng to newuser;//mysql5之后可以使用，之前需要使�
 mysql>drop user newuser;//mysql5之前删除用户时必须先使用revoke删除用户权限，然后删除用户
 ```
 
+6.修改密码
+
+```
+mysql> SET PASSWORD FOR 'root'@'localhost' = PASSWORD('123456');
+```
+
 ---
 
 ### <span id="权限设置">权限设置</span>
+
+**权限**：
+
+权限 | 权限级别 | 权限说明
+--- | --- | ---
+CREATE | 数据库、表或索引 | 创建数据库、表或索引权限
+DROP | 数据库或表 | 删除数据库或表权限
+GRANT OPTION | 数据库、表或保存的程序 | 赋予权限选项
+REFERENCES | 数据库或表 | 操作MySQL外键权限
+ALTER | 表 | 更改表，比如添加字段、索引等
+INDEX | 表 | 索引权限
+SELECT | 表 | 查询权限
+INSERT | 表 | 插入权限
+UPDATE | 表 | 更新权限
+DELETE | 表 | 删除数据权限
+CREATE VIEW | 视图 | 创建视图权限
+SHOW VIEW | 视图 | 查看视图权限
+CREATE ROUTINE | 存储过程 | 创建存储过程权限
+ALTER ROUTINE | 存储过程 | 更改存储过程权限
+EXECUTE | 存储过程 | 执行存储过程权限
+FILE | 服务器主机上的文件访问 | 文件访问权限
+CREATE TEMPORARY TABLES | 服务器管理 | 创建临时表权限
+LOCK TABLES | 服务器管理 | 锁表权限
+CREATE USER | 服务器管理 | 创建用户权限
+PROCESS | 服务器管理 | 查看进程权限
+RELOAD | 服务器管理 |执行flush-hosts,flush-logs,flush-privileges,flush-status,flush-tables,flush-threads,refresh,reload等命令的权限
+REPLICATION CLIENT | 服务器管理 | 复制权限
+REPLICATION SLAVE | 服务器管理 | 复制权限
+SHOW DATABASES | 服务器管理 | 查看数据库权限
+SHUTDOWN | 服务器管理 | 关闭数据库权限
+SUPER | 服务器管理 | 执行kill线程权限
+
+**权限分布**：
+
+权限分布 | 可能的设置的权限
+--- | ---
+表权限 | 'Select', 'Insert', 'Update', 'Delete', 'Create', 'Drop', 'Grant', 'References', 'Index', 'Alter'
+列权限 | 'Select', 'Insert', 'Update', 'References'
+过程权限 | 'Execute', 'Alter Routine', 'Grant'
+
+**数据库对象**：
+
+数据库对象 | 说明
+-----|-----
+*.* | 作用在整个MySQL服务器上
+testdb.* | 作用在单个数据库上
+testdb.orders | 作用在单个数据表上
+procedure testdb.pr_add | 作用在存储过程上
+function testdb.fn_add | 作用在函数上
+
 1.查看用户权限
 
+（1）查看当前用户权限
+
+```SQL
+show grants;
 ```
-mysql>show grants for test;
+
+（2）查看其他MySQL用户权限
+
+```SQL
+show grants for test;
+//或
+show grants for test@'%';
 ```
 
 2.赋予用户新权限
 
+格式：grant 权限 on 数据库对象 to 用户 [identified by 密码] [with grant option]
+
+GRANT命令说明：
+
+-  jack@'localhost'：表示jack用户，@后面接限制的主机，可以是IP、IP段、域名以及%，%表示任何地方。注意：这里%有的版本不包括本地，有时给某个用户设置了%允许任何地方登录，但是在本地登录不了，这个和版本有关系，遇到这个问题再加一个localhost的用户就可以了。
++ IDENTIFIED BY：指定用户的登录密码
+- WITH GRANT OPTION：表示该用户可以将自己拥有的权限授权给别人。
+
+作用在表的列上，执行以下语句：
+
+```SQL
+grant select(id, se, rank) on testdb.apache_log to test@'%';
+```
+
+**实例**：
+
 （1）赋予用户访问数据库权限
 
 ```SQL
-grant all privileges on test_db.* to testuser@localhost identified by "123456" ;　　
+grant all [privileges] on test_db.* to testuser@localhost identified by "123456" ;　　
 //设置用户testuser，只能访问数据库test_db，其他数据库均不能访问 
 
 grant all privileges on *.* to testuser@localhost identified by "123456" ;　　
@@ -211,9 +293,12 @@ grant all privileges on *.* to testuser@“192.168.1.100” identified by "12345
 
 3.回收权限
 
+格式：revoke 权限 on 数据库对象 from 用户
+
 ```
 mysql>revoke select on dmc_db.* from test;//如果权限不存在会报错
 ```
+
 **注：上面的命令也可以使用多个权限同时赋予和回收，权限之间使用逗号分隔**
 
 ```
