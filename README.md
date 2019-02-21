@@ -37,6 +37,7 @@ MySQL重要概念与常用语句
     + [删除表](#删除表)
     - [修改表结构](#修改表结构)
 6. [数据操作](#数据操作)
+    + [查询数据](#查询数据)
     - [插入数据](#插入数据)
     + [修改数据](#修改数据)
     - [删除数据](#删除数据)
@@ -933,6 +934,31 @@ RENAME TABLE user TO user1;
 ---
 
 ## <span id="数据操作">六、数据操作</span>
+
+### <span id="查询数据">查询数据</span>
+
+**SELECT语句**
+
+```SQL
+SELECT column_1,column_2,...
+FROM table_1 [INNER|LEFT|RIGHT] JOIN table2 ON conditions
+WHERE conditions
+GROUP BY column_1
+HAVING group_conditions
+ORDER BY column_1
+LIMIT offset,length;
+```
+SELECT语句由以下列表中所述的几个子句组成：
+
+- `SELECT` 之后是逗号分隔列或星号(*)的列表，表示要返回所有列。
++ `FROM` 指定要查询数据的表或视图。
+- `JOIN` 根据某些连接条件从其他表中获取数据。
++ `WHERE` 过滤结果集中的行。
+- `GROUP BY` 将一组行组合成小分组，并对每个小分组应用聚合函数。
++ `HAVING` 过滤器基于GROUP BY子句定义的小分组。
+- `ORDER BY` 指定用于排序的列的列表。
++ `LIMIT` 限制返回行的数量。
+
 ### <span id="插入数据">插入数据</span>
 #### 将文本文件装载到表中：LOAD DATA语句
 
